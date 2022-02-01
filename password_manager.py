@@ -1,11 +1,9 @@
 import io
+
+
 #display Welcome to Password manager when program starts
 print("\nWelcome to Password manager\n")
 
-#def encryption (cleartext):
-    # charset = "0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz`!@#$%^&*()_-=|\"':;?/>.<, "
-    # encText = " ".join([charset[(charset.find(c)+3)%95] for c in cleartext])
-    # print(encText)
 
 def add_data():
     
@@ -27,11 +25,11 @@ def add_data():
         password = input("Enter password ")
         charset = "0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz`!@#$%^&*()_-=|\"':;?/>.<, "
         encText = " ".join([charset[(charset.find(c)+3)%95] for c in password])
-        myfile.writelines(encText)
+        myfile.write(encText)
         
         # add URL/Source to the file
         url = input("Enter URL/Source ")
-        myfile.writelines(url)
+        myfile.write(url)
 
        
     #close the file
@@ -41,12 +39,13 @@ def add_data():
     print("\nSuccessfully added your credentials\n\n")
 
 def display_data():
-    f = open("credentials.txt", "r")
+    #f = open("credentials.txt", "r")
 
-    with open('credentials.txt','r') as f:
-        print(f"{'User Name' :28} {'Password' : ^28} {'URL/Source' : >28}")
-        lines = [line.strip() for line in f]
-        print(lines)
+    
+    print(f"{'User Name' :28} {'Password' : ^28} {'URL/Source' : >28}")
+    f =open('credentials.txt','r')
+    lines = [line.strip() for line in f]
+    print("user",lines)
         
     #print(f"{num1 : <28} {num2 : ^28} {num3 : >28}")
 
