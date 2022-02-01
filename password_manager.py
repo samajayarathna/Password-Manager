@@ -8,7 +8,7 @@ print("\nWelcome to Password manager\n")
 def add_data():
     
     #create a file called credentials.txt if it doesnt exist
-    myfile = open("credentials.txt ", "a")
+    #myfile = open("credentials.txt ", "a")
 
     with open("credentials.txt ", "a+") as myfile:
         userName = input("Please enter User name ")
@@ -39,13 +39,11 @@ def add_data():
     print("\nSuccessfully added your credentials\n\n")
 
 def display_data():
-    #f = open("credentials.txt", "r")
-
     
     print(f"{'User Name' :28} {'Password' : ^28} {'URL/Source' : >28}")
     f =open('credentials.txt','r')
     lines = [line.strip() for line in f]
-    print("user",lines)
+    print(lines)
         
     #print(f"{num1 : <28} {num2 : ^28} {num3 : >28}")
 
