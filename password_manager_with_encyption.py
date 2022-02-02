@@ -3,8 +3,9 @@
 print("\nWelcome to Password manager\n")
 
 choice = 0
-charset = "0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz`!@#$%^&*(+)_-=|\"':;?/>.<, "
+charSet="0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz`~!@#$%^&*(+)_-=|\}]{[\"':;?/>.<, "
 
+    
 
 
 
@@ -12,16 +13,15 @@ def add_data():
 
     #create a file called credentials.txt if it doesnt exist
     myfile =open("credentials.txt ", "a")
-    
     # get data from the user
-    userName = input("Please enter User name ")
-    password = input("Enter password ")
-    url = input("Enter URL/Source ")
+    userName = input("Please enter User name :")
+    password = input("Enter password :")
+    url = input("Enter URL/Source :")
     
-    encryUserName = " ".join([charset[(charset.find(c)+3)%95] for c in userName])
-    encryPassword = " ".join([charset[(charset.find(c)+3)%95] for c in password])
-    encryUrl = " ".join([charset[(charset.find(c)+3)%95] for c in url])
-    
+    encryUserName = "".join([charSet[(charSet.find(c)+3)%95] for c in (userName + ' ')])
+    encryPassword = "".join([charSet[(charSet.find(c)+3)%95] for c in (password + ' ')])
+    encryUrl = "".join([charSet[(charSet.find(c)+3)%95] for c in (url + ' ')])
+
     #write data to the file
     myfile.write(encryUserName)
     myfile.write(encryPassword)
@@ -35,14 +35,13 @@ def add_data():
 
 def display_data():
     
-    #f=open("credentials.txt ", "a")
-    f =open('credentials.txt','r')
-
+    f=open("credentials.txt ", "r")
+  
     #display data in command prompt
     data = f.read()
     f.close()
 
-    decryptData = " ".join([charset[(charset.find(c)-3)%95] for c in data])
+    decryptData = " ".join([charSet[(charSet.find(c)-3)%95] for c in data])
     dataList = decryptData.split()
     
     print(f"{'User Name' :10} {'Password' : ^20} {'URL/Source' : >10}")
