@@ -22,6 +22,7 @@ def add_data():
     encryPassword = "".join([charSet[(charSet.find(c)+3)%95] for c in (password + ' ')])
     encryUrl = "".join([charSet[(charSet.find(c)+3)%95] for c in (url + ' ')])
 
+
     #write data to the file
     myfile.write(encryUserName)
     myfile.write(encryPassword)
@@ -41,7 +42,7 @@ def display_data():
     data = f.read()
     f.close()
 
-    decryptData = " ".join([charSet[(charSet.find(c)-3)%95] for c in data])
+    decryptData = "".join([charSet[(charSet.find(c)-3)%95] for c in data])
     dataList = decryptData.split()
     
     print(f"{'User Name' :10} {'Password' : ^20} {'URL/Source' : >10}")
